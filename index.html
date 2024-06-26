@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Cessna R182 Skylane RG</title>
+
+    <!-- Fontawesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        * {
+            font-family: "Lato", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h2,
+        h3 {
+            font-size: 16px;
+            text-decoration: underline;
+        }
+
+        h3 {
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            margin: 36px 0;
+        }
+
+        .nav {
+            height: 50px;
+            width: 100%;
+            background-color: #0d6efd;
+            position: relative;
+        }
+
+        .nav>.nav-header {
+            display: inline;
+        }
+
+        .nav>.nav-header>.nav-title {
+            display: inline-block;
+            font-size: 22px;
+            color: #fff;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .nav>.nav-btn {
+            display: none;
+        }
+
+        .nav>.nav-links {
+            display: inline;
+            float: right;
+            font-size: 16px;
+        }
+
+        .nav>.nav-links>a {
+            display: inline-block;
+            padding: 13px 10px 13px 10px;
+            text-decoration: none;
+            color: #efefef;
+        }
+
+        .nav>.nav-links>a:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .nav>#nav-check {
+            display: none;
+        }
+
+        .nav>.nav-btn {
+            display: inline-block;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .nav>.nav-btn>label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+        }
+
+        .nav>.nav-btn>label:hover,
+        .nav #nav-check:checked~.nav-btn>label {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .nav>.nav-btn>label>span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #eee;
+        }
+
+        .nav>.nav-links {
+            position: absolute;
+            display: block;
+            width: 100%;
+            background-color: #0d6efd;
+            height: 0px;
+            transition: all 0.3s ease-in;
+            overflow-y: hidden;
+            top: 50px;
+            left: 0px;
+        }
+
+        .nav>.nav-links>a {
+            display: block;
+            width: 100%;
+        }
+
+        .nav>#nav-check:not(:checked)~.nav-links {
+            height: 0px;
+        }
+
+        .nav>#nav-check:checked~.nav-links {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+        }
+
+        .table th {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        tr td:nth-child(3) {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .check-icon-container {
+            width: 24px;
+        }
+
+        .check-icon {
+            visibility: hidden;
+        }
+
+        .table-success .check-icon {
+            visibility: visible;
+        }
+
+        .table-success {
+            background-color: #008000 !important;
+            color: white;
+        }
+
+        .btn {
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0056b3;
+            border-color: #004085;
+            text-decoration: none;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active,
+        .show>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #004085;
+            border-color: #004085;
+            text-decoration: none;
+        }
+
+        .btn-primary:disabled {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            opacity: 0.65;
+        }
+
+        .btn-danger {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            margin-left: 8px;
+        }
+
+        .float-start {
+            float: left;
+        }
+
+        .float-end {
+            float: right;
+        }
+
+        /* Mobile */
+        @media only screen and (max-width: 480px) {
+
+            .table,
+            .container {
+                width: 95%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Tablet */
+        @media only screen and (min-width: 481px) {
+
+            .table,
+            .container {
+                width: 75%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Desktop */
+        @media only screen and (min-width: 1024px) {
+
+            .table,
+            .container {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+        </div>
+        <div class="nav-btn">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(1);">1. Preflight</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(2);">2. Before Start</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(3);">3. After Start</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(4);">4. Runups</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(5);">5. Before
+                Takeoff</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(6);">6. After
+                Takeoff</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(7);">7. Cruise</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(8);">8. Prior to TOD</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(9);">9. Approach</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(10);">10. After
+                Landing</a>
+            <a href="#" onclick="document.getElementById('nav-check').checked = false; loadPage(11);">11. Shutdown</a>
+            <a href="#" onclick="resetChecklist();">Reset</a>
+        </div>
+    </div>
+
+    <div id="content">
+        <h1>Preflight/Cockpit Prep</h1>
+        <table class="table" id="checklistTable">
+            <tbody id="checklistBody">
+                <!-- Dynamic rows will be added here -->
+            </tbody>
+        </table>
+        <div class="container">
+            <h2>End of List</h2>
+            <h3 id="checklistComplete" style="display:none;">Checklist Complete</h3>
+            <button id="prevButton" class="btn btn-primary float-start" onclick="loadPreviousChecklist()">Previous
+                checklist</button>
+            <button id="nextButton" class="btn btn-primary float-end" onclick="loadNextChecklist()">Next
+                Checklist</button>
+        </div>
+    </div>
+
+    <script>
+        // Define checklists with checked state
+        const checklists = {
+            1: [
+                { item: "Fire Extinguisher", status: "Onboard", checked: false },
+                { item: "Control Lock", status: "Off", checked: false },
+                { item: "Battery Switch", status: "Onboard", checked: false },
+                { item: "Flaps Lowered 20", status: "Done", checked: false },
+                { item: "Check Stall Warning Horn", status: "Done", checked: false },
+                { item: "Battery Switch", status: "Off", checked: false },
+                { item: "Cargo Door ", status: "Unlock", checked: false },
+                { item: "Left Tail Plane Condition", status: "Inspect", checked: false },
+                { item: "Left Horizontal Stab Condition", status: "Inspect", checked: false },
+                { item: "VG under Left Horizontal Stabilizer", status: "Count", checked: false },
+                { item: "Elevator Movement", status: "Check", checked: false },
+                { item: "VG on Left Vertical Stabilizer", status: "Count", checked: false },
+                { item: "Left Vertical Stabilizer Condition", status: "Inspect", checked: false },
+                { item: "Beacon", status: "Inspect", checked: false },
+                { item: "Tail LED", status: "Inspect", checked: false },
+                { item: "Rudder Movement", status: "Check", checked: false },
+                { item: "Right Vertical Stabilizer Condition ", status: "Inspect", checked: false },
+                { item: "VG under Right Horizontal Stabilizer", status: "Count", checked: false },
+                { item: "Elevator Movement", status: "Check", checked: false },
+                { item: "Right Horizontal Stab Condition", status: "Inspect", checked: false },
+                { item: "Right Tail Plane Condition", status: "Inspect", checked: false },
+                { item: "Antennas Above and below", status: "Inspect", checked: false },
+                { item: "Fuel Drain Right Tank", status: "Done", checked: false },
+                { item: "Right Tyre and Brake", status: "Inspect", checked: false },
+                { item: "Right Flaps", status: "Inspect", checked: false },
+                { item: "Right Aileron", status: "Inspect", checked: false },
+                { item: "Right Pulse Light", status: "Inspect", checked: false },
+                { item: "Right Landing Light", status: "Inspect", checked: false },
+                { item: "Right Wing Leading edge VG", status: "Count", checked: false },
+                { item: "Right Strut Condition", status: "Inspect", checked: false },
+                { item: "Right Chock Out", status: "Done", checked: false },
+                { item: "Static Port", status: "Inspect", checked: false },
+                { item: "Prop and Spinner", status: "Inspect", checked: false },
+                { item: "Remove Inlet Protectors", status: "Done", checked: false },
+                { item: "Fuel Sump Drain 4 Seconds", status: "Done", checked: false },
+                { item: "Check Oil", status: "Done", checked: false },
+                { item: "Remove BOM Cover", status: "Done", checked: false },
+                { item: "Remove Pitot Cover", status: "Done", checked: false },
+                { item: "Left Wing Leading edge VG", status: "Count", checked: false },
+                { item: "Left Wing Landing Light", status: "Inspect", checked: false },
+                { item: "Left Wing Pulse Light", status: "Inspect", checked: false },
+                { item: "Left Aileron", status: "Inspect", checked: false },
+                { item: "Left Flaps", status: "Inspect", checked: false },
+                { item: "Fuel Drain Left Tank", status: "Done", checked: false },
+                { item: "Left Tyre and Brake", status: "Inspect", checked: false },
+                { item: "Left Chock Out", status: "Done", checked: false },
+                { item: "Load Baggage", status: "Done", checked: false },
+                { item: "Lock Baggage Door", status: "Done", checked: false },
+                { item: "Safety Briefing", status: "Done", checked: false },
+                { item: "Notify RCS", status: "Done", checked: false }
+            ],
+            2: [
+                { item: "Park Brake On", status: "Set", checked: false },
+                { item: "Cabin Secured", status: "Done", checked: false },
+                { item: "Cabin Air", status: "Open", checked: false },
+                { item: "Cabin Heat", status: "Closed", checked: false },
+                { item: "Mixture", status: "Full Rich", checked: false },
+                { item: "Prop", status: "Full Fine", checked: false },
+                { item: "Throttle", status: "Open 10mm", checked: false },
+                { item: "Throttle Friction", status: "Set", checked: false },
+                { item: "Elevator Trim", status: "Set", checked: false },
+                { item: "Rudder Trim", status: "Set", checked: false },
+                { item: "Cowl Flaps", status: "Open", checked: false },
+                { item: "Fuel Selector", status: "Both", checked: false },
+                { item: "Carby Heat", status: "Closed", checked: false },
+                { item: "Beacon", status: "On", checked: false },
+                { item: "Nav Lights", status: "On", checked: false },
+                { item: "Avionics", status: "Off", checked: false },
+                { item: "Circuit Breakers", status: "Checked", checked: false },
+                { item: "Cold Start 3 Pumps with Primer", status: "Done", checked: false },
+                { item: "Brake Pressure", status: "Checked", checked: false },
+                { item: "Battery Switch", status: "On", checked: false },
+                { item: "Check Prop Area is Clear", status: "Done", checked: false },
+                { item: "Start Engine", status: "Done", checked: false }
+            ],
+            3: [
+                { item: "Throttle 1000 rpm", status: "Done", checked: false },
+                { item: "Oil Pressure 30-100 psi", status: "Check", checked: false },
+                { item: "Fuel Gauges Correct", status: "Check", checked: false },
+                { item: "Fuel Mixture Leaned", status: "Done", checked: false },
+                { item: "Flaps Retracted", status: "Fuel Mixture Leaned", checked: false },
+                { item: "Avionics", status: "On", checked: false },
+                { item: "Taxi Lights ", status: "On", checked: false },
+                { item: "Transponder on Alt", status: "Done", checked: false },
+                { item: "Radios Correct Frequency", status: "Set", checked: false },
+                { item: "AutoPilot", status: "Off", checked: false },
+                { item: "Fuel Monitor On", status: "Check", checked: false },
+                { item: "Engine Monitor On", status: "Check", checked: false },
+                { item: "AV-30 Functioning", status: "Check", checked: false },
+                { item: "AV-30 QNH", status: "Set", checked: false },
+                { item: "Altimeter QNH", status: "Set", checked: false },
+                { item: "CO2 Alarm", status: "On", checked: false },
+                { item: "Test Brakes", status: "Check", checked: false }
+            ],
+            4: [
+                { item: "Doors and Windows Closed", status: "Check", checked: false },
+                { item: "Park Brake On", status: "Set", checked: false },
+                { item: "Fuel Mixture Full Rich", status: "Set", checked: false },
+                { item: "Throttle 1700 RPM", status: "Set", checked: false },
+                { item: "Right Mag", status: "Check", checked: false },
+                { item: "Left Mag", status: "Check", checked: false },
+                { item: "Less than 50 rpm Change", status: "Check", checked: false },
+                { item: "Carb Heat", status: "Check", checked: false },
+                { item: "Vacuum Gauge", status: "Check", checked: false },
+                { item: "Prop Control", status: "Check", checked: false },
+                { item: "Alt Static", status: "Check", checked: false },
+                { item: "Idle Check 600 rpm", status: "Check", checked: false }
+            ],
+            5: [
+                { item: "Elevator Trim Set", status: "Done", checked: false },
+                { item: "Rudder Trim Set", status: "Done", checked: false },
+                { item: "Mixture Full Rich", status: "Done", checked: false },
+                { item: "Prop Full Fine", status: "Done", checked: false },
+                { item: "Flight Controls Free", status: "Check", checked: false },
+                { item: "Flaps to 10", status: "Done", checked: false },
+                { item: "Fuel on both", status: "Check", checked: false },
+                { item: "Fuel Primer Locked", status: "Check", checked: false },
+                { item: "Align AV-30 Compass", status: "Done", checked: false },
+                { item: "Align HSI", status: "Done", checked: false },
+                { item: "Check Radio Frequency", status: "Check", checked: false },
+                { item: "AutoPilot Off", status: "Check", checked: false },
+                { item: "Landing Lights On", status: "Done", checked: false },
+                { item: "LED Landing lights On", status: "Done", checked: false },
+                { item: "LED Pulse Lights On", status: "Done", checked: false },
+                { item: "Doors and Seatbelts", status: "Check", checked: false },
+                { item: "Departure Brief", status: "Done", checked: false },
+                { item: "Release Park Brake", status: "Done", checked: false }
+            ],
+            6: [
+                { item: "300 Feet AGL + 80 KIAS Retract Flaps", status: "Done", checked: false },
+                { item: "500+ AGL Feet Turn Xwind", status: "Done", checked: false }
+            ],
+            7: [
+                { item: "Landing Lights ", status: "Off", checked: false },
+                { item: "Radio Call to Area", status: "Done", checked: false },
+                { item: "Fuel Mixture Lean", status: "Done", checked: false }
+            ],
+            8: [
+                { item: "Landing Lights ", status: "On", checked: false },
+                { item: "Radio Call to Area", status: "Done", checked: false },
+                { item: "Fuel Mixture Lean", status: "Done", checked: false }
+            ],
+            9: [
+                { item: "Chart", status: "Check", checked: false },
+                { item: "Radios", status: "Set", checked: false },
+                { item: "Aircraft Configuration", status: "Check", checked: false },
+                { item: "Approach Plan", status: "Done", checked: false },
+                { item: "10nm Radio Call", status: "Done", checked: false },
+                { item: "Brakes", status: "Check", checked: false },
+                { item: "Undercarriage", status: "Check", checked: false },
+                { item: "Mixture Full Rich", status: "Check", checked: false },
+                { item: "Engine T&P", status: "Check", checked: false },
+                { item: "Fuel Enough for Go Around", status: "Check", checked: false },
+                { item: "Altimeter & HSI", status: "Check", checked: false },
+                { item: "AV-30 ", status: "Check", checked: false },
+                { item: "Landing Lights On", status: "Done", checked: false },
+                { item: "LED Pulse Light On", status: "Done", checked: false },
+                { item: "Seatbelts Secure", status: "Check", checked: false },
+                { item: "Doors and Windows Locked", status: "Check", checked: false },
+                { item: "Fuel Selector on Both", status: "Done", checked: false }
+            ],
+            10: [
+                { item: "Carby Heat Off", status: "Done", checked: false },
+                { item: "Flaps Retract", status: "Done", checked: false },
+                { item: "Cowl Flaps Open", status: "Done", checked: false },
+                { item: "Transponder STDY", status: "Done", checked: false },
+                { item: "Fuel Mixture Lean", status: "Done", checked: false },
+                { item: "Landing Light Off", status: "Done", checked: false }
+            ],
+            11: [
+                { item: "Park Brake On", status: "Done", checked: false },
+                { item: "Trim Set for T/O", status: "Done", checked: false },
+                { item: "Avionics Off", status: "Done", checked: false },
+                { item: "Fuel Mixture Cut Off", status: "Done", checked: false },
+                { item: "Magetos Off", status: "Done", checked: false },
+                { item: "Master Switch Off", status: "Done", checked: false },
+                { item: "Keys Out", status: "Done", checked: false },
+                { item: "Sartime", status: "Done", checked: false },
+                { item: "MR", status: "Done", checked: false },
+                { item: "Chocks", status: "Done", checked: false },
+                { item: "Intake Covers", status: "Done", checked: false },
+                { item: "Pitot and BOM Cover", status: "Done", checked: false },
+                { item: "Tie Downs", status: "Done", checked: false },
+                { item: "Cabin Cover", status: "Done", checked: false },
+                { item: "Lock Doors", status: "Done", checked: false },
+                { item: "Check Beacon is Off", status: "Done", checked: false }
+            ]
+        };
+
+        let currentPage = 1;
+
+        // Function to initialize the page with a specific checklist
+        function loadPage(page) {
+            currentPage = page;
+            const checklistItems = checklists[page];
+            populateChecklist(checklistItems, pageTitles[page - 1]);
+        }
+
+        // Common function to populate checklist
+        function populateChecklist(checklistItems, title) {
+            const checklistBody = document.getElementById('checklistBody');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const checklistComplete = document.getElementById('checklistComplete');
+
+            // Clear previous rows
+            checklistBody.innerHTML = '';
+
+            // Populate checklist
+            checklistItems.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="check-icon-container"><i class="fa fa-check check-icon"></i></td>
+                    <td>${item.item}</td>
+                    <td>${item.status}</td>
+                `;
+                // Add table-success class if item is checked
+                if (item.checked) {
+                    row.classList.add('table-success');
+                }
+                checklistBody.appendChild(row);
+            });
+
+            // Update heading
+            document.getElementById('content').querySelector('h1').innerText = title;
+
+            // Manage previous and next buttons visibility and functionality
+            prevButton.style.display = currentPage === 1 ? 'none' : 'inline-block';
+            nextButton.style.display = currentPage === Object.keys(checklists).length ? 'none' : 'inline-block';
+            checklistComplete.style.display = currentPage === Object.keys(checklists).length ? 'block' : 'none';
+        }
+
+        // Define the titles for the pages
+        const pageTitles = [
+            'Preflight',
+            'Before Start',
+            'After Start',
+            'Runups',
+            'Before Takeoff',
+            'After Takeoff',
+            'Cruise',
+            'Prior to TOD',
+            'Approach',
+            'After Landing',
+            'Shutdown'
+        ];
+
+        // Function to handle row click and toggle checked state
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize with preflight checklist
+            loadPage(1);
+
+            // Event listener for checklist table rows
+            document.getElementById('checklistBody').addEventListener('click', function (event) {
+                const target = event.target;
+                const row = target.closest('tr');
+                if (row) {
+                    const index = Array.from(row.parentNode.children).indexOf(row); // Get index of row
+                    const checklist = checklists[currentPage];
+                    checklist[index].checked = !checklist[index].checked; // Toggle checked state
+                    row.classList.toggle('table-success'); // Toggle table-success class
+                }
+            });
+        });
+
+        function loadPreviousChecklist() {
+            if (currentPage > 1) {
+                loadPage(currentPage - 1);
+            }
+        }
+
+        function loadNextChecklist() {
+            if (currentPage < Object.keys(checklists).length) {
+                loadPage(currentPage + 1);
+            }
+        }
+
+        // Function to reset checklists
+        function resetChecklist() {
+            // Reset all checklists
+            for (let key in checklists) {
+                checklists[key].forEach(item => {
+                    item.checked = false;
+                });
+            }
+            // Load the first checklist
+            loadPage(1);
+            // Uncheck the navbar checkbox to close the navbar
+            document.getElementById('nav-check').checked = false;
+        }
+    </script>
+</body>
+
+</html>
